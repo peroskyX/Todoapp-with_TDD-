@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { ITodo, TodoInput, TodoUpdate, TodoResponse } from '../types/todo';
+import { ITodo, TodoInput, TodoResponse } from '../types/todo';
 
 const todoSchema = new Schema(
   {

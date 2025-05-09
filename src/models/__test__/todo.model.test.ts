@@ -31,4 +31,19 @@ describe('Todo Model', () => {
     expect(todo.completed).toBe(todoData.completed);
     expect(todo.createdAt).toBeInstanceOf(Date);
   });
+
+  it('should fail validation if title is not provided', async () => {
+    const invaliTodoData: TodoInput = {
+      title: '',
+      description: 'Missing title',
+      completed: false,
+    };
+
+    try {
+      await TodoModel.create(invaliTodoData);
+      fail('Should have throw validation error');
+    } catch (error) {
+      expect(error).toBeDefined();
+    }
+  });
 });

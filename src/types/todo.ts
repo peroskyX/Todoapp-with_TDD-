@@ -13,12 +13,6 @@ export interface TodoInput {
   completed?: boolean;
 }
 
-export interface TodoUpdate {
-  title?: string;
-  description?: string;
-  completed?: boolean;
-}
-
 export interface TodoResponse extends ITodo {
   _id: string;
 }
