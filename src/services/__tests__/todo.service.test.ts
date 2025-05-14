@@ -44,13 +44,14 @@ describe('Todo Service', () => {
   });
   describe('getTodoById', () => {
     it('should return todo by id', async () => {
-      const todoData = {
+      const todoData: TodoInput = {
         title: 'Get Todo',
         description: 'Get description',
         completed: false,
       };
-      const createTodo = await TodoModel.create(todoData);
-      const todo = await getTodoByID(createTodo._id.toString());
+      const createdTodo = await createTodo(todoData);
+      if (!createdTodo?._id) throw new Error('Created todo missing ID');
+      const todo = await getTodoByID(createdTodo._id.toString());
       expect(todo).toBeDefined();
       expect(todo?.title).toBe(todoData.title);
     });
@@ -62,7 +63,7 @@ describe('Todo Service', () => {
   });
   describe('getAllTodos', () => {
     it('should return all todos', async () => {
-      const todoData1 = {
+      const todoData1: TodoInput = {
         title: 'Todo 1',
         description: 'Description 1',
         completed: false,
@@ -88,7 +89,7 @@ describe('Todo Service', () => {
         completed: false,
       };
       const createTodo = await TodoModel.create(todoData);
-      const updatedData = {
+      const updatedData: TodoInput = {
         title: 'Updated Todo',
         description: 'Updated description',
         completed: true,
@@ -107,7 +108,7 @@ describe('Todo Service', () => {
   });
   describe('deleteTodo', () => {
     it('should delete a todo', async () => {
-      const todoData1 = {
+      const todoData1: TodoInput = {
         title: 'Delete Todo1',
         description: 'Delete description2',
         completed: false,
@@ -122,7 +123,7 @@ describe('Todo Service', () => {
       await deleteTodo(createTodo1._id.toString());
       const todos = await TodoModel.find();
       expect(todos.length).toBe(1);
-      expect(todos[0].title).toBe(todoData2.title);
+      expect(todos[0].title).toBe(createTodo2.title);
     });
     it('should return null for non-existent todo id', async () => {
       const nonExistedId = new mongoose.Types.ObjectId().toString();
