@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { ITodo, TodoInput, TodoResponse } from '../types/todo';
+import { ITodo, ITodoInput, TodoResponse } from '../types/todo';
 
 const todoSchema = new Schema(
   {
@@ -9,6 +9,10 @@ const todoSchema = new Schema(
       trim: true,
     },
     description: {
+      type: String,
+      trim: true,
+    },
+    category: {
       type: String,
       trim: true,
     },
