@@ -7,7 +7,7 @@ export interface ITodo {
   updatedAt?: Date;
 }
 
-export interface TodoInput {
+export interface ITodoInput {
   title: string;
   description?: string;
   completed?: boolean;

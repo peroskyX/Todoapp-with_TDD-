@@ -8,7 +8,7 @@ import {
   deleteTodo,
 } from '../todo.service';
 import TodoModel from '../../models/todo.model';
-import { TodoInput } from '../../types/todo';
+import { ITodoInput } from '../../types/todo';
 
 describe('Todo Service', () => {
   let mongoServer: MongoMemoryServer;
@@ -44,7 +44,7 @@ describe('Todo Service', () => {
   });
   describe('getTodoById', () => {
     it('should return todo by id', async () => {
-      const todoData: TodoInput = {
+      const todoData: ITodoInput = {
         title: 'Get Todo',
         description: 'Get description',
         completed: false,
@@ -63,12 +63,12 @@ describe('Todo Service', () => {
   });
   describe('getAllTodos', () => {
     it('should return all todos', async () => {
-      const todoData1: TodoInput = {
+      const todoData1: ITodoInput = {
         title: 'Todo 1',
         description: 'Description 1',
         completed: false,
       };
-      const todoData2 = {
+      const todoData2: ITodoInput = {
         title: 'Todo 2',
         description: 'Description 2',
         completed: true,
@@ -83,13 +83,13 @@ describe('Todo Service', () => {
   });
   describe('updateTodo', () => {
     it('should update a todo', async () => {
-      const todoData = {
+      const todoData: ITodoInput = {
         title: 'Update Todo',
         description: 'Update description',
         completed: false,
       };
       const createTodo = await TodoModel.create(todoData);
-      const updatedData: TodoInput = {
+      const updatedData: ITodoInput = {
         title: 'Updated Todo',
         description: 'Updated description',
         completed: true,
@@ -108,12 +108,12 @@ describe('Todo Service', () => {
   });
   describe('deleteTodo', () => {
     it('should delete a todo', async () => {
-      const todoData1: TodoInput = {
+      const todoData1: ITodoInput = {
         title: 'Delete Todo1',
         description: 'Delete description2',
         completed: false,
       };
-      const todoData2 = {
+      const todoData2: ITodoInput = {
         title: 'Delete Todo 2',
         description: 'Delete description2',
         completed: true,

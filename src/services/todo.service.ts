@@ -1,7 +1,7 @@
 import TodoModel from '../models/todo.model';
-import { ITodo, TodoInput } from '../types/todo';
+import { ITodo, ITodoInput } from '../types/todo';
 
-export const createTodo = async (todoData: TodoInput): Promise<ITodo> => {
+export const createTodo = async (todoData: ITodoInput): Promise<ITodo> => {
   return await TodoModel.create(todoData);
 };
 
@@ -15,7 +15,7 @@ export const getAllTodos = async (): Promise<ITodo[]> => {
 
 export const updateTodo = async (
   id: string,
-  todoData: Partial<TodoInput>
+  todoData: Partial<ITodoInput>
 ): Promise<ITodo | null> => {
   return await TodoModel.findByIdAndUpdate(id, todoData, { new: true });
 };

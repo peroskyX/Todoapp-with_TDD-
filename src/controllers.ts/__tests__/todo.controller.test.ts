@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import * as todoService from '../../services/todo.service';
 import { createTodoHandler } from '../todo.controller';
-import { TodoInput } from '../../types/todo';
+import { ITodoInput } from '../../types/todo';
 
 // Mock the todoService
 jest.mock('../../services/todo.service');
@@ -21,7 +21,7 @@ describe('Todo Controller', () => {
 
   describe('createTodoHandler', () => {
     it('should return a new todo', async () => {
-      const todoData: TodoInput = {
+      const todoData: ITodoInput = {
         title: 'Test Todo',
         description: 'Test Description',
       };
